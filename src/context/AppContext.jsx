@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { AppConstants } from "../util/constants.js";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { doctors } from "../assets/assets";
 
 export const AppContext = createContext();
 
@@ -44,12 +45,20 @@ export const AppContextProvider = (props) => {
       getAuthState();
     },[])
 
+    
+
+    const currencySymbol = '$'
+
     const contextValue = {
        backendURL,
        isLoggedIn, setIsLoggedIn,
        userData, setUserData,
        getUserData,
+       doctors,
+       currencySymbol,
     }
+
+    
 
     return(
         <AppContext.Provider value={contextValue}>
@@ -58,4 +67,6 @@ export const AppContextProvider = (props) => {
     )
 
 }
+
+export default AppContextProvider;
 
